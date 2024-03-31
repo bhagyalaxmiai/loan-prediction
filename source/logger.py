@@ -1,20 +1,17 @@
 import os
-import logging  #ready made package, to maintain the logs
-from datetime import datetime
+import logging
+from source.constant.constant_train import ARTIFACT_DIR
 
-# Define the log file name with timestamp
-LOG_FILE = f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.log"
 
-# Define the directory path where logs will be stored
-logs_path = os.path.join(os.getcwd(), 'logs')
+def setup_logger(global_timestamp):
+    LOG_FILE = f"{global_timestamp}.log"
+    logs_path = os.path.join(os.getcwd(), ARTIFACT_DIR + '/' + global_timestamp + '/log')
+    os.makedirs(logs_path, exist_ok=True)
 
-# Create the logs directory if it doesn't exist
-os.makedirs(logs_path, exist_ok=True)
+    LOG_FILE_PATH = os.path.join(logs_path, LOG_FILE)
 
-LOG_FILE_PATH = os.path.join(logs_path, LOG_FILE)
-
-# include the timestamp, line number, log level, and the message itself.
-logging.basicConfig(
-    filename=LOG_FILE_PATH,
-    format="[%(asctime)s] %(lineno)d - %(levelname)s - %(message)s"
-)
+    logging.basicConfig(
+        filename=LOG_FILE_PATH,
+        format="[%(asctime)s] %(lineno)d %(levelname)s - %(message)s",
+        level=logging.INFO
+    )

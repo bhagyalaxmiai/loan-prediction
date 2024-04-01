@@ -14,7 +14,7 @@ def error_message_detail(error, error_detail:sys):
 
 
 # class ChurnException extends the Exception class
-class ChurnException(Exception):
+class LoanException(Exception):
     def __init__(self, error_message, error_detail:sys):
         super().__init__(error_message)
 

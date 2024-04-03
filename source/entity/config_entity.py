@@ -23,3 +23,9 @@ class TrainingPipelineConfig:
 
         #DATA VALIDATION
         self.imputation_values_file = constant_train.DV_IMPUTATION_VALUES_FILE
+        self.outliers_params_file = constant_train.DV_OUTLIERS_PARAMS_FILE
+        self.dv_train_file_path = os.path.join(self.artifact_dir,constant_train.DV_DIR_NAME)
+        self.dv_test_file_path = os.path.join(self.artifact_dir, constant_train.DV_DIR_NAME)
+        self.train_file_name = constant_train.TRAIN_FILE_NAME
+        self.test_file_name = constant_train.TEST_FILE_NAME
+

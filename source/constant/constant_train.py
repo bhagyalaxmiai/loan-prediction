@@ -32,3 +32,5 @@ DI_MANDATORY_COLUMN_DATA_TYPE = {'Gender': 'object', 'Married': 'object', 'Depen
 
 # Data Validation Constants
 DV_IMPUTATION_VALUES_FILE = "source/ml/imputation_values.csv"
+DV_OUTLIERS_PARAMS_FILE = "source/ml/outliers_details.csv"
+DV_DIR_NAME = 'data_validation'

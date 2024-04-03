@@ -18,3 +18,8 @@ class TrainingPipelineConfig:
         self.mongodb_url_key = constant_train.MONGODB_URL_KEY
         self.database_name = constant_train.DATABASE_NAME
         self.collection_name = constant_train.DI_COLLECTION_NAME
+        self.mandatory_column_list = constant_train.DI_MANDATORY_COLUMN_LIST
+        self.mandatory_column_datatype = constant_train.DI_MANDATORY_COLUMN_DATA_TYPE
+
+        #DATA VALIDATION
+        self.imputation_values_file = constant_train.DV_IMPUTATION_VALUES_FILE

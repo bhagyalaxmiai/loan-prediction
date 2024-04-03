@@ -1,5 +1,6 @@
 import logging
 import os
+import sys
 import pandas as pd
 from pandas import DataFrame
 from source.exception import LoanException
@@ -55,6 +56,55 @@ class DataIngestion:
         except LoanException as e:
             raise e
 
+
+    def clean_data(self,data):
+        try:
+            logging.info("Start : clean data")
+            data = data.drop_duplicates()
+
+            data = data.loc[:,data.nunique()>1]
+
+            drop_column = []
+            for col in data.select_dtypes(include=['object']).columns:
+                unique_count = data[col].nunique()
+
+                if unique_count / len(data) > 0.5:
+                    data.drop(col, axis=1, inplace=True)
+                    drop_column.append(col)
+            logging.info(f"Dropped column:{drop_column}")
+            logging.info("Complete : clean data")
+
+            return data
+        except LoanException as e:
+            raise e
+
+
+    def process_data(self,data):
+
+        try:
+
+            logging.info("Start : process data")
+            # data['Credit_History'] = data['Credit_History'].astype('O')
+            for col in self.train_config.mandatory_column_list:
+                if col not in data.columns:
+                    raise LoanException(f"Missing Mandatory column : {col}", error_detail=sys.exc_info())
+
+                if data[col].dtype != self.train_config.mandatory_column_datatype[col]:
+                    try:
+
+                        data[col] = data[col].astype(self.train_config.mandatory_column_datatype[col])
+
+                    except ValueError as e:
+                        raise LoanException(f"Error : converting data type for column :{col}", error_detail=sys.exc_info())
+
+            return data
+
+            logging.info("Complete : process data")
+
+        except LoanException as e:
+            raise e
     def initiate_data_ingestion(self):
         data = self.export_data_into_feature_store()
+        data = self.clean_data(data)
+        data = self.process_data(data)
         self.split_data_test_train(data)

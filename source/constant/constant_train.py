@@ -1,5 +1,6 @@
 # common constants
 import certifi
+
 ca = certifi.where()
 
 TARGET_COLUMN = 'Loan_Status'
@@ -20,3 +21,14 @@ DI_FEATURE_STORE_DIR = 'feature_store'
 DI_INGESTED_DIR = 'ingested'
 DI_TRAIN_TEST_SPLIT_RATIO = 0.2
 
+DI_MANDATORY_COLUMN_LIST = ['Gender', 'Married', 'Dependents', 'Education', 'Self_Employed', 'Credit_History',
+                         'Property_Area', 'Loan_Status', 'ApplicantIncome', 'CoapplicantIncome', 'LoanAmount',
+                         'Loan_Amount_Term']
+
+DI_MANDATORY_COLUMN_DATA_TYPE = {'Gender': 'object', 'Married': 'object', 'Dependents': 'object', 'Education': 'object',
+                              'Self_Employed': 'object', 'Credit_History': 'float64', 'Property_Area': 'object',
+                              'Loan_Status': 'object', 'ApplicantIncome': 'int64', 'CoapplicantIncome': 'float64',
+                              'LoanAmount': 'float64', 'Loan_Amount_Term': 'float64'}
+
+# Data Validation Constants
+DV_IMPUTATION_VALUES_FILE = "source/ml/imputation_values.csv"

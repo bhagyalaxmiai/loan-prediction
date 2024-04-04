@@ -21,7 +21,7 @@ class TrainingPipelineConfig:
         self.mandatory_column_list = constant_train.DI_MANDATORY_COLUMN_LIST
         self.mandatory_column_datatype = constant_train.DI_MANDATORY_COLUMN_DATA_TYPE
 
-        #DATA VALIDATION
+        # DATA VALIDATION
         self.imputation_values_file = constant_train.DV_IMPUTATION_VALUES_FILE
         self.outliers_params_file = constant_train.DV_OUTLIERS_PARAMS_FILE
         self.dv_train_file_path = os.path.join(self.artifact_dir,constant_train.DV_DIR_NAME)
@@ -29,3 +29,10 @@ class TrainingPipelineConfig:
         self.train_file_name = constant_train.TRAIN_FILE_NAME
         self.test_file_name = constant_train.TEST_FILE_NAME
 
+        # data transformation
+        self.dt_binary_class_col = constant_train.DT_BINARY_CLASS_COL
+        self.dt_multi_class_col = constant_train.DT_MULTI_CLASS_COL
+        self.dt_multi_class_encoder = constant_train.DT_ENCODER_PATH
+        self.dt_multi_class_encoder = constant_train.DT_ENCODER_PATH
+        self.dt_train_file_path = os.path.join(self.artifact_dir, constant_train.DT_DIR_NAME)
+        self.dt_test_file_path = os.path.join(self.artifact_dir, constant_train.DT_DIR_NAME)

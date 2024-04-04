@@ -26,11 +26,18 @@ DI_MANDATORY_COLUMN_LIST = ['Gender', 'Married', 'Dependents', 'Education', 'Sel
                          'Loan_Amount_Term']
 
 DI_MANDATORY_COLUMN_DATA_TYPE = {'Gender': 'object', 'Married': 'object', 'Dependents': 'object', 'Education': 'object',
-                              'Self_Employed': 'object', 'Credit_History': 'float64', 'Property_Area': 'object',
-                              'Loan_Status': 'object', 'ApplicantIncome': 'int64', 'CoapplicantIncome': 'float64',
+                              'Self_Employed': 'object', 'Credit_History': 'object', 'Property_Area': 'object',
+                              'Loan_Status': 'object', 'ApplicantIncome': 'float64', 'CoapplicantIncome': 'float64',
                               'LoanAmount': 'float64', 'Loan_Amount_Term': 'float64'}
 
 # Data Validation Constants
 DV_IMPUTATION_VALUES_FILE = "source/ml/imputation_values.csv"
 DV_OUTLIERS_PARAMS_FILE = "source/ml/outliers_details.csv"
 DV_DIR_NAME = 'data_validation'
+
+
+# Data transformation constant
+DT_MULTI_CLASS_COL = ['Dependents', 'Property_Area']
+DT_BINARY_CLASS_COL = ['Gender', 'Married', 'Education', 'Self_Employed']
+DT_ENCODER_PATH = 'source/ml/multi_class_encoder.pkl'
+DT_DIR_NAME: str = "data_transformation"

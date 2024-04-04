@@ -1,7 +1,7 @@
-,Imputation_Value
-ApplicantIncome,3850.0
-CoapplicantIncome,1041.0
-LoanAmount,128.0
+,imputation_value
+ApplicantIncome,3775.0
+CoapplicantIncome,1260.0
+LoanAmount,127.0
 Loan_Amount_Term,360.0
 Gender,Male
 Married,Yes

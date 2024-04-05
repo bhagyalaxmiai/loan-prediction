@@ -41,3 +41,9 @@ DT_MULTI_CLASS_COL = ['Dependents', 'Property_Area']
 DT_BINARY_CLASS_COL = ['Gender', 'Married', 'Education', 'Self_Employed']
 DT_ENCODER_PATH = 'source/ml/multi_class_encoder.pkl'
 DT_DIR_NAME: str = "data_transformation"
+
+# model train and evaluate
+
+MODEL_PATH = "source/ml/artifact"
+FINAL_MODEL_PATH = "source/ml/final_model"
+FINAL_MODEL_FILE_NAME = "GradientBoostingClassifier.pkl"

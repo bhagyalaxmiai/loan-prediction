@@ -56,10 +56,9 @@ class DataValidation:
         try:
             if type=='train':
 
-                for column_name in data.select_dtypes(include=['number']).columns:
+                for column_name in data.select_dtypes(include=['float64', 'int64']).columns:
                     Q1 = data[column_name].quantile(0.25)
-                    Q3 = data[column_name].quantile(0.75)
-
+                    Q3 = data[column_name].quantile(0.75)   
                     IQR = Q3 - Q1
 
                     lower_bound = Q1 - 1.5 * IQR

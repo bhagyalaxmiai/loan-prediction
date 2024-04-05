@@ -3,7 +3,8 @@ import pandas as pd
 import warnings
 from source.logger import logging
 from source.exception import LoanException
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, classification_report, make_scorer
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, \
+    classification_report, make_scorer
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
@@ -40,6 +41,7 @@ def hyperparameter_tuning(x_train, y_train):
     except LoanException as e:
         raise e
 
+
 class ModelTrainEvaluate:
     def __init__(self, utility_config):
         self.utility_config = utility_config
@@ -53,10 +55,11 @@ class ModelTrainEvaluate:
             "AdaBoostClassifier": AdaBoostClassifier(),
             "GaussianNB": GaussianNB(),
             "KNeighborsClassifier": KNeighborsClassifier(),
-            "XGBClassifier": XGBClassifier()
+            # "XGBClassifier": XGBClassifier()
         }
 
-        self.model_evaluation_report = pd.DataFrame(columns=["model_name", "accuracy", "precision", "recall", "f1", "class_report", "confu_matrix"])
+        self.model_evaluation_report = pd.DataFrame(
+            columns=["model_name", "accuracy", "precision", "recall", "f1", "class_report", "confu_matrix"])
 
     def model_training(self, train_data, test_data):
         try:
@@ -64,7 +67,6 @@ class ModelTrainEvaluate:
             y_train = train_data['Loan_Status']
             x_test = test_data.drop('Loan_Status', axis=1)
             y_test = test_data['Loan_Status']
-
 
             for name, model in self.models.items():
                 model.fit(x_train, y_train)
@@ -101,7 +103,7 @@ class ModelTrainEvaluate:
         try:
             x_train = train_data.drop('Loan_Status', axis=1)
             y_train = train_data['Loan_Status']
-            test_data = test_data.drop(test_data.index[-2:])
+            # test_data = test_data.drop(test_data.index[-2:])
             x_test = test_data.drop('Loan_Status', axis=1)
             y_test = test_data['Loan_Status']
 
@@ -126,9 +128,9 @@ class ModelTrainEvaluate:
         try:
 
             train_data = pd.read_csv(self.utility_config.dt_train_file_path + '/' + self.utility_config.train_file_name,
-                                     dtype={'Credit_History':'object', 'ApplicantIncome':'float64'})
+                                     dtype={'Credit_History': 'object', 'ApplicantIncome': 'float64'})
             test_data = pd.read_csv(self.utility_config.dt_test_file_path + '/' + self.utility_config.test_file_name,
-                                    dtype={'Credit_History':'object', 'ApplicantIncome':'float64'})
+                                    dtype={'Credit_History': 'object', 'ApplicantIncome': 'float64'})
 
             self.model_training(train_data, test_data)
             self.model_evaluation_report.to_csv("source/ml/model_evaluation_report.csv", index=False)

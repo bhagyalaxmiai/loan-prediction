@@ -15,7 +15,7 @@ class TrainingPipelineConfig:
         self.train_file_path = os.path.join(self.di_dir, constant_train.DI_INGESTED_DIR, constant_train.TRAIN_FILE_NAME)
         self.test_file_path = os.path.join(self.di_dir, constant_train.DI_INGESTED_DIR, constant_train.TEST_FILE_NAME)
         self.train_test_split_ratio = constant_train.DI_TRAIN_TEST_SPLIT_RATIO
-        self.mongodb_url_key = constant_train.MONGODB_URL_KEY
+        self.mongodb_url_key = os.environ['MONGODB_KEY']
         self.database_name = constant_train.DATABASE_NAME
         self.collection_name = constant_train.DI_COLLECTION_NAME
         self.mandatory_column_list = constant_train.DI_MANDATORY_COLUMN_LIST
@@ -36,3 +36,8 @@ class TrainingPipelineConfig:
         self.dt_multi_class_encoder = constant_train.DT_ENCODER_PATH
         self.dt_train_file_path = os.path.join(self.artifact_dir, constant_train.DT_DIR_NAME)
         self.dt_test_file_path = os.path.join(self.artifact_dir, constant_train.DT_DIR_NAME)
+
+        # Model Train And Evaluate
+        self.model_path = os.path.join(constant_train.MODEL_PATH)
+        self.final_model_path = os.path.join(constant_train.FINAL_MODEL_PATH)
+        self.final_model_name = constant_train.FINAL_MODEL_FILE_NAME

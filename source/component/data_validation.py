@@ -58,7 +58,7 @@ class DataValidation:
 
                 for column_name in data.select_dtypes(include=['float64', 'int64']).columns:
                     Q1 = data[column_name].quantile(0.25)
-                    Q3 = data[column_name].quantile(0.75)   
+                    Q3 = data[column_name].quantile(0.75)
                     IQR = Q3 - Q1
 
                     lower_bound = Q1 - 1.5 * IQR
@@ -102,8 +102,8 @@ class DataValidation:
 
         train_data = self.handle_missing_value(train_data, type='train')
         test_data = self.handle_missing_value(test_data, type='test')
-        train_data.to_csv('traindata_missingvalues.csv',index=False)
-        test_data.to_csv('testdata_missingvalues.csv', index=False)
+        # train_data.to_csv('traindata_missingvalues.csv',index=False)
+        # test_data.to_csv('testdata_missingvalues.csv', index=False)
         # train_data.to_csv('train_data_Processed.csv', index=False)
         # test_data.to_csv('test_data_Processed.csv', index=False)
 

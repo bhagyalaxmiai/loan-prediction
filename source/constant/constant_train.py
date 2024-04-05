@@ -11,7 +11,8 @@ FILE_NAME = 'loan-train-data.csv'
 TRAIN_FILE_NAME = 'train.csv'
 TEST_FILE_NAME = 'test.csv'
 
-MONGODB_URL_KEY = 'mongodb+srv://veenagabnave:aa5xcuda8yrgb6Zd@cluster0.otxvmcd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0&tlsCAFile=' + ca
+# MONGODB_URL_KEY = 'mongodb+srv://veenagabnave:aa5xcuda8yrgb6Zd@cluster0.otxvmcd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0&tlsCAFile=' + ca
+MONGODB_KEY = "MONGODB_KEY"
 DATABASE_NAME = 'loan-prediction'
 
 # Data Ingestion Constants

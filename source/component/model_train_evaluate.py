@@ -3,6 +3,7 @@ import pandas as pd
 import warnings
 from source.logger import logging
 from source.exception import LoanException
+from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, classification_report, make_scorer
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
@@ -60,6 +61,11 @@ class ModelTrainEvaluate:
 
     def model_training(self, train_data, test_data):
         try:
+
+            label_encoder = LabelEncoder()
+            train_data['Credit_History'] = label_encoder.fit_transform(train_data['Credit_History'])
+            test_data['Credit_History'] = label_encoder.transform(test_data['Credit_History'])
+
             x_train = train_data.drop('Loan_Status', axis=1)
             y_train = train_data['Loan_Status']
             x_test = test_data.drop('Loan_Status', axis=1)

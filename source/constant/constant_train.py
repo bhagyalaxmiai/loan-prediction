@@ -1,21 +1,17 @@
 # common constants
-import certifi
-
-ca = certifi.where()
-
 TARGET_COLUMN = 'Loan_Status'
 TRAIN_PIPELINE_NAME = 'training_pipeline'
 ARTIFACT_DIR = 'artifact'
-FILE_NAME = 'loan-train-data.csv'
+FILE_NAME = 'train-data.csv'
 
 TRAIN_FILE_NAME = 'train.csv'
 TEST_FILE_NAME = 'test.csv'
 
-MONGODB_URL_KEY = 'mongodb+srv://veenagabnave:aa5xcuda8yrgb6Zd@cluster0.otxvmcd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0&tlsCAFile=' + ca
-DATABASE_NAME = 'loan-prediction'
+MONGODB_URL_KEY = 'MONGODB_KEY'
+DATABASE_NAME = 'Loan_prediction'
 
 # Data Ingestion Constants
-DI_COLLECTION_NAME = 'loan-train-data'
+DI_COLLECTION_NAME = 'loan_dataset'
 DI_DIR_NAME = 'data_ingestion'
 DI_FEATURE_STORE_DIR = 'feature_store'
 DI_INGESTED_DIR = 'ingested'
@@ -41,3 +37,9 @@ DT_MULTI_CLASS_COL = ['Dependents', 'Property_Area']
 DT_BINARY_CLASS_COL = ['Gender', 'Married', 'Education', 'Self_Employed']
 DT_ENCODER_PATH = 'source/ml/multi_class_encoder.pkl'
 DT_DIR_NAME: str = "data_transformation"
+
+# Model Train And Evaluate
+MODEL_PATH = "source/ml/artifact"
+FINAL_MODEL_PATH = "source/ml/final_model"
+
+FINAL_MODEL_FILE_NAME = 'GradientBoostingClassifier.pkl'

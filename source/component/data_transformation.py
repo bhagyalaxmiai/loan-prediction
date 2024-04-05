@@ -98,10 +98,10 @@ class DataTransformation:
 
             smote = SMOTE()
 
-            x_resmapled, y_resampled = smote.fit_resample(x, y)
+            x_resampled, y_resampled = smote.fit_resample(x, y)
 
             return pd.concat(
-                [pd.DataFrame(x_resmapled, columns=x.columns), pd.DataFrame(y_resampled, columns=['Loan_Status'])], axis=1)
+                [pd.DataFrame(x_resampled, columns=x.columns), pd.DataFrame(y_resampled, columns=['Loan_Status'])], axis=1)
 
         except LoanException as e:
             raise e
